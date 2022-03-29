@@ -17,7 +17,7 @@ export async function runLicenseCheck({
 
   const options: ExecOptions = {
     ignoreReturnCode: true,
-    cwd: path.join(process.env.RUNNER_WORKSPACE as string, repo),
+    cwd: process.env.WORKDIR || path.join(process.env.RUNNER_WORKSPACE as string, repo),
     listeners: {
       stdout: data => {
         stdout += data.toString();
